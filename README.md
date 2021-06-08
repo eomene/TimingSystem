@@ -114,5 +114,5 @@ A good use case would be if you intend to show your timer counting down. You cou
 
      }
 
-
+Examples are also included for playing sounds when timer gets to a certain value. You can check out the demo folder for this 
 
