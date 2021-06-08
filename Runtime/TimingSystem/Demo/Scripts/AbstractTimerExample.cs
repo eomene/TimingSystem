@@ -16,26 +16,27 @@ public class AbstractTimerExample : MonoBehaviour
     [ContextMenu("StartDownTimer")]
     public void StartTickDownTimer()
     {
-        abstractTimer.StartTickDownTimer("jsdfs", "tickdowntest", 15, () =>
+        abstractTimer.StartTickDownTimer("timerUniqueKeyTickDown", "My friendly name tick down", 15, () =>
         {
             Debug.LogError("My Timer Ended...Yaay!");
         });
     }
 
 
-    [ContextMenu("StartUpTimerStopCountTillManualStop")]
+    [ContextMenu("StartTickUpTimer")]
     public void StartTickUpTimerCountTillManualStop()
     {
-        abstractTimer.StartTickUpTimer("hrrthrthr", "tickdowntest", () =>
+        abstractTimer.StartTickUpTimer("timerUniqueKeyTickUp", "My friendly name tick up", () =>
         {
             Debug.LogError("My Timer Ended...Yaay!");
         });
     }
 
-    [ContextMenu("StopUpTimerStopCountTillManualStop")]
-    public void StopTickUpTimerCountTillManualStop()
+    [ContextMenu("StopTickUpTimer")]
+    public void StopTickUpTimer()
     {
-      Debug.LogError($"My timer ended in these seconds {abstractTimer.EndTimer("hrrthrthr")}");
+        float timeLen = abstractTimer.EndTimer("timerUniqueKey");
+        Debug.Log($"My Timer Ended in {timeLen} seconds!");
     }
 
 }
