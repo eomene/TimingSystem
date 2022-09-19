@@ -16,7 +16,7 @@ public class AbstractTimerExample : MonoBehaviour
     [ContextMenu("StartDownTimer")]
     public void StartTickDownTimer()
     {
-        abstractTimer.StartTickDownTimer("timerUniqueKeyTickDown", "My friendly name tick down", 15, () =>
+        abstractTimer.StartTickDownTimer("timerUniqueKeyTickDown", "My friendly name tick down", 15, (key) =>
         {
             Debug.LogError("My Timer Ended...Yaay!");
         });
@@ -26,7 +26,7 @@ public class AbstractTimerExample : MonoBehaviour
     [ContextMenu("StartTickUpTimer")]
     public void StartTickUpTimerCountTillManualStop()
     {
-        abstractTimer.StartTickUpTimer("timerUniqueKeyTickUp", "My friendly name tick up", () =>
+        abstractTimer.StartTickUpTimer("timerUniqueKeyTickUp", "My friendly name tick up", (key) =>
         {
             Debug.LogError("My Timer Ended...Yaay!");
         });

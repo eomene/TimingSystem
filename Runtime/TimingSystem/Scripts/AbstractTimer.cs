@@ -33,13 +33,13 @@ namespace Cradaptive.AbstractTimer
                         if (timerLog[i].timerType == TimerType.TickUp)
                         {
                             timerLog[i].timer += Time.deltaTime;
-                            timerLog[i]?.onTimerUpdated?.Invoke(timerLog[i].timer);
+                            timerLog[i]?.onTimerUpdated?.Invoke(timerLog[i].key,timerLog[i].timer);
                             UpdateCurrentDisplays(timerLog[i]);
                         }
                         else
                         {
                             timerLog[i].timer -= Time.deltaTime;
-                            timerLog[i]?.onTimerUpdated?.Invoke(timerLog[i].timer > 0 ? timerLog[i].timer : 0);
+                            timerLog[i]?.onTimerUpdated?.Invoke(timerLog[i].key,timerLog[i].timer > 0 ? timerLog[i].timer : 0);
                             UpdateCurrentDisplays(timerLog[i]);
                             if (timerLog[i].timer < 0)
                             {
@@ -75,7 +75,7 @@ namespace Cradaptive.AbstractTimer
                 float finalTimer = timerLog.timerType == TimerType.TickDown ? timerLog.maxTime : timerLog.timer;
                 Debug.LogError($"Timer ended for timer {timerLog.name} with key {timerLog.key} in {finalTimer} seconds");
             }
-            timerLog?.onTimerCompleted?.Invoke();
+            timerLog?.onTimerCompleted?.Invoke(timerLog.key);
             this.timerLog.RemoveAt(i);
         }
 
@@ -102,40 +102,40 @@ namespace Cradaptive.AbstractTimer
             return log != null ? log.timer : 0;
         }
 
-        public void StartTickUpTimer(string key, string name, Action onTimerCompleted, Action<float> onTimerUpdated = null)
+        public void StartTickUpTimer(string key, string name, Action<string> onTimerCompleted, Action<string,float> onTimerUpdated = null)
         {
-            CradaptiveTimerClass axemServerTimerClass = new CradaptiveTimerClass();
+            CradaptiveTimerClass timerClass = new CradaptiveTimerClass();
 
-            axemServerTimerClass.key = key;
-            axemServerTimerClass.tick = true;
-            axemServerTimerClass.name = name;
-            axemServerTimerClass.onTimerCompleted = onTimerCompleted;
-            axemServerTimerClass.timerType = TimerType.TickUp;
-            axemServerTimerClass.onTimerUpdated = onTimerUpdated;
+            timerClass.key = key;
+            timerClass.tick = true;
+            timerClass.name = name;
+            timerClass.onTimerCompleted = onTimerCompleted;
+            timerClass.timerType = TimerType.TickUp;
+            timerClass.onTimerUpdated = onTimerUpdated;
 
             if (showDebugMessages)
                 Debug.LogError($"Started Timer for timer {name} with key {key}");
 
-            timerLog.Add(axemServerTimerClass);
+            timerLog.Add(timerClass);
         }
 
-        public void StartTickDownTimer(string key, string name, float startTimeInSeconds, Action onTimerCompleted, Action<float> onTimerUpdated = null)
+        public void StartTickDownTimer(string key, string name, float startTimeInSeconds, Action<string> onTimerCompleted, Action<string,float> onTimerUpdated = null)
         {
-            CradaptiveTimerClass axemServerTimerClass = new CradaptiveTimerClass();
+            CradaptiveTimerClass timerClass = new CradaptiveTimerClass();
 
-            axemServerTimerClass.key = key;
-            axemServerTimerClass.tick = true;
-            axemServerTimerClass.name = name;
-            axemServerTimerClass.onTimerCompleted = onTimerCompleted;
-            axemServerTimerClass.timer = startTimeInSeconds;
-            axemServerTimerClass.maxTime = startTimeInSeconds;
-            axemServerTimerClass.timerType = TimerType.TickDown;
-            axemServerTimerClass.onTimerUpdated = onTimerUpdated;
+            timerClass.key = key;
+            timerClass.tick = true;
+            timerClass.name = name;
+            timerClass.onTimerCompleted = onTimerCompleted;
+            timerClass.timer = startTimeInSeconds;
+            timerClass.maxTime = startTimeInSeconds;
+            timerClass.timerType = TimerType.TickDown;
+            timerClass.onTimerUpdated = onTimerUpdated;
 
             if (showDebugMessages)
                 Debug.LogError($"Started Timer for timer {name} with key {key} for {startTimeInSeconds} seconds");
 
-            timerLog.Add(axemServerTimerClass);
+            timerLog.Add(timerClass);
         }
 
         public void TogglePause(bool pause)

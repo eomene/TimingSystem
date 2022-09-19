@@ -30,7 +30,7 @@ namespace Cradaptive.AbstractTimer
         /// <summary>
         /// Callback once the timer has reached its maxmum
         /// </summary>
-        public Action onTimerCompleted;
+        public Action<string> onTimerCompleted;
         /// <summary>
         /// maximum time if it ticks up
         /// </summary>
@@ -44,7 +44,7 @@ namespace Cradaptive.AbstractTimer
         /// <summary>
         /// Callback when timer is updated
         /// </summary>
-        public Action<float> onTimerUpdated;
+        public Action<string,float> onTimerUpdated;
 
     }
 }
