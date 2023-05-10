@@ -1,0 +1,7 @@
+
+/// <summary>
+/// The CradaptiveTimerInterfaces file contains interfaces that provide a basis for
+/// the implementation of the Cradaptive Timer functionality. The interfaces define
+/// methods and properties that specific Cradaptive Timer classes should implement
+/// based on their requirements.
+/// </summary>
