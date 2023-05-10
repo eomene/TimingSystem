@@ -1,0 +1,9 @@
+
+/// <summary>
+/// The StartTickUpTimer function is responsible for initializing and starting the timer to count upward.
+/// It sets the initial time value and enables the timer to begin increasing its value based on the given update frequency.
+/// </summary>
+/// <param name="initialTime">The initial time value in seconds for the timer.</param>
+/// <param name="updateFrequency">How often (in seconds) the timer should be updated. Default value is 1.0f.</param>
+/// <returns>Returns True if the timer started successfully or False if there was an error or the timer is already running.</returns>
+public bool StartTickUpTimer(float initialTime, float updateFrequency = 1.0f) { /*...*/ }
