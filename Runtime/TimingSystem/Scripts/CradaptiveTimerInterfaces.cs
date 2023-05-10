@@ -1,12 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Cradaptive.AbstractTimer
+
+```
+/// <summary>
+/// Interface for providing implementations for Cradaptive Timer notifications.
+/// </summary>
+public interface ICradaptiveTimerNotifications
 {
-    public interface IAbstractTimerConsumer
-    {
-        void onTimerUpdated(CradaptiveTimerClass timerValue);
-        void onTimerEnded();
-    }
+    ...
 }
+
+/// <summary>
+/// Interface for providing implementations for Cradaptive Timer decisions.
+/// </summary>
+public interface ICradaptiveTimerDecision
+{
+    ...
+}
+```
