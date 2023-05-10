@@ -1,0 +1,7 @@
+
+/// <summary>
+/// The AbstractTimer class is a base class for all types of timers in the TimingSystem.
+/// It provides an abstract implementation of timer functionality and should be extended
+/// by specific timer classes to implement custom timer logic.
+/// </summary>
+
