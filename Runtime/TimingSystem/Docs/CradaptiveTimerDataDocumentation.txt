@@ -1,0 +1,7 @@
+
+/// <summary>
+/// The CradaptiveTimerData class is a data class that holds information related
+/// to Cradaptive Timers. This includes information on the timer's type, maximum time,
+/// minimum time, and its description.
+/// </summary>
+
