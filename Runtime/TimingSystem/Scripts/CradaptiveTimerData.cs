@@ -1,50 +1,43 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Cradaptive.AbstractTimer
+
+/// <summary>
+/// Represents data for Cradaptive timers.
+/// </summary>
+[Serializable]
+public class CradaptiveTimerData
 {
-    public enum TimerType { TickDown, TickUp }
+    [SerializeField]
+    private float _baseDuration;
+    [SerializeField]
+    private float _durationModifier;
 
-
-    [Serializable]
-    public class CradaptiveTimerClass
+    /// <summary>
+    /// Create a new CradaptiveTimerData instance with the specified base duration and duration modifier.
+    /// </summary>
+    /// <param name="baseDuration">Base duration of the timer.</param>
+    /// <param name="durationModifier">Duration modifier applied to the base duration.</param>
+    public CradaptiveTimerData(float baseDuration, float durationModifier)
     {
-        /// <summary>
-        /// Unique identifier for timer
-        /// </summary>
-        public string key;
-        /// <summary>
-        /// Ticking time, should not be modified by outsider the timer manager
-        /// </summary>
-        public float timer;
-        /// <summary>
-        /// Should tick
-        /// </summary>
-        public bool tick;
-        /// <summary>
-        /// Friendly name for timer
-        /// </summary>
-        public string name;
-        /// <summary>
-        /// Callback once the timer has reached its maxmum
-        /// </summary>
-        public Action<string> onTimerCompleted;
-        /// <summary>
-        /// maximum time if it ticks up
-        /// </summary>
-        [HideInInspector]
-        public float maxTime = 60;
+        _baseDuration = baseDuration;
+        _durationModifier = durationModifier;
+    }
 
-        public bool tickDownTimer;
+    /// <summary>
+    /// Get or set the base duration of the timer.
+    /// </summary>
+    public float BaseDuration
+    {
+        get => _baseDuration;
+        set => _baseDuration = value;
+    }
 
-        public TimerType timerType;
-
-        /// <summary>
-        /// Callback when timer is updated
-        /// </summary>
-        public Action<string,float> onTimerUpdated;
-
+    /// <summary>
+    /// Get or set the duration modifier applied to the base duration.
+    /// </summary>
+    public float DurationModifier
+    {
+        get => _durationModifier;
+        set => _durationModifier = value;
     }
 }
+
